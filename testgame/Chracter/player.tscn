@@ -1,9 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://cajvyfdrolpsp"]
 
-[ext_resource type="Script" uid="uid://b1alycxb2h3oi" path="res://Chracter/player_move.gd" id="1_bhh1a"]
+[ext_resource type="Script" uid="uid://cbbb1meeexj7l" path="res://Chracter/player.gd" id="1_bhh1a"]
 [ext_resource type="Texture2D" uid="uid://blbj7ejf4fhlm" path="res://icon.svg" id="1_dr2ep"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhh1a"]
+size = Vector2(40, 40)
 
 [sub_resource type="Animation" id="Animation_bhh1a"]
 resource_name = "Idle"
