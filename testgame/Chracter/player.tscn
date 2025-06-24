@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://cajvyfdrolpsp"]
+
+[ext_resource type="Script" uid="uid://b1alycxb2h3oi" path="res://Chracter/player_move.gd" id="1_bhh1a"]
+[ext_resource type="Texture2D" uid="uid://blbj7ejf4fhlm" path="res://icon.svg" id="1_dr2ep"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhh1a"]
+
+[sub_resource type="Animation" id="Animation_bhh1a"]
+resource_name = "Idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_w2b0u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_64dsi"]
+_data = {
+&"Idle": SubResource("Animation_bhh1a"),
+&"RESET": SubResource("Animation_w2b0u")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t5172"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gr1t8"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_mtyfu"]
+states/Idle/node = SubResource("AnimationNodeAnimation_t5172")
+states/Idle/position = Vector2(361, 77)
+states/Start/position = Vector2(195, 87)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_gr1t8")]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_bhh1a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bhh1a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7.15256e-07, 0)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("1_dr2ep")
+hframes = 2
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_64dsi")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_mtyfu")
+anim_player = NodePath("../AnimationPlayer")
