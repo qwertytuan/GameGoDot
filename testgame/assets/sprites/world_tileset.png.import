@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cla7cobaf2kuk"
-path="res://.godot/imported/cavernes.png-2d81afa8eea399ba9a9c5fabc45f585f.ctex"
+uid="uid://dg58ml2b82oh7"
+path="res://.godot/imported/world_tileset.png-61a32465f33c3d9d3bfecb75b6485009.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Background/cavernes.png"
-dest_files=["res://.godot/imported/cavernes.png-2d81afa8eea399ba9a9c5fabc45f585f.ctex"]
+source_file="res://assets/sprites/world_tileset.png"
+dest_files=["res://.godot/imported/world_tileset.png-61a32465f33c3d9d3bfecb75b6485009.ctex"]
 
 [params]
 
